@@ -1,7 +1,6 @@
-import axios from "axios";
 import React, { useEffect, useLayoutEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
-import { ScrollView, StyleSheet, Image, View } from "react-native";
+import { ScrollView, Image, View } from "react-native";
 import Sural from "../components/Sural";
 import suralList from "../db/suralList.json";
 
@@ -10,7 +9,6 @@ export default function SuralList({ navigation }) {
   const [loading, setLoading] = useState(true);
 
   const fetchingData = async () => {
-    setLoading(true);
     try {
       const res = await suralList;
       setSural(res.chapters);
@@ -20,16 +18,20 @@ export default function SuralList({ navigation }) {
     }
   };
 
-  // api.quran.com/api/v4/chapters/%7Bchapter_id%7D/info?language=en
   useLayoutEffect(() => {
+    setLoading(true);
     navigation.setOptions({
-      title: "Al Qur'an",
-      headerLeft: () => (
-        <Image
-          source={require("../media/quran.png")}
-          style={{ width: 40, height: 40, margin: 5 }}
-        />
-      ),
+      title: "Al-Qur'an Kareem",
+      headerTitleStyle: {
+        color: "white",
+        fontSize: 24,
+      },
+      // header: () => (
+      //   <Image
+      //     source={require("../media/quran.png")}
+      //     style={{ width: 40, height: 40, margin: 5 }}
+      //   />
+      // ),
     });
     fetchingData();
   }, []);
@@ -49,12 +51,9 @@ export default function SuralList({ navigation }) {
           number={id}
           title={name_complex}
           arabic={name_arabic}
-          // subtitle={subtitle}
           navigation={navigation}
         />
       ))}
     </ScrollView>
   );
 }
-
-const styles = StyleSheet.create({});

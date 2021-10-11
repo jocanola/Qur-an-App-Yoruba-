@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, Share, TouchableOpacity, Text, View } from "react-native";
+import { StyleSheet, Share, TouchableOpacity, View } from "react-native";
 import { Avatar } from "react-native-elements/dist/avatar/Avatar";
 import { Entypo, FontAwesome } from "@expo/vector-icons";
 
@@ -32,11 +32,10 @@ export default function HeaderBar({ message, number }) {
       />
       <View style={styles.subContainer}>
         <TouchableOpacity onPress={onShare}>
-          <Entypo name="share" size={24} color="black" />
+          <Entypo name="share" size={34} color="#A8E1DC" />
         </TouchableOpacity>
         <TouchableOpacity></TouchableOpacity>
-
-        <FontAwesome name="bookmark-o" size={24} color="black" />
+        <FontAwesome name="bookmark-o" size={34} color="#A8E1DC" />
       </View>
     </View>
   );
@@ -47,10 +46,10 @@ const styles = StyleSheet.create({
     flex: 1,
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingVertical: 10,
+    marginVertical: 16,
   },
   subContainer: {
-    width: 50,
+    width: 100,
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -62,7 +61,6 @@ const styles = StyleSheet.create({
     borderRadius: 999,
     borderWidth: 3,
     borderStyle: "dotted",
-    
     width: 40,
   },
 });
